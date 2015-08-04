@@ -41,6 +41,37 @@
     [request startAsynchronous];
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 10;
+    
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];    //分组的tableView里才有用
+    NSInteger row = [indexPath row];
+    static NSString *SectionsTableIdentifier = @"SectionsTableIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SectionsTableIdentifier];
+    if (cell == nil)
+      {
+        cell = [[UITableViewCell alloc]
+                
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SectionsTableIdentifier];
+        
+    }
+    cell.textLabel.text = [[myDataSource objectAtIndex:sectionNumber] objectAtIndex:rowNumber];//设置当前单元格的显示内容
+    
+    cell.textLabel.textColor = [UIColor greenColor];//设置当前单元格的显示字体的颜色
+    
+    return cell;
+}
+
+
 - (void)loadAdDataFinish:(ASIHTTPRequest *)req
 {
     NSError *error;
@@ -68,6 +99,13 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *TaskArryDict = TaskArry[indexPath.row];
+           //打开玩家界面
+        NSDictionary *adDic=[NSDictionary dictionaryWithObject:TaskArryDict forKey:@"UserId"];
+        [self performSegueWithIdentifier:@"showformdetail" sender:adDic];
+}
 
 
 - (void)didReceiveMemoryWarning {
