@@ -51,6 +51,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="待办" image="mainBoard_main" id="N9j-2O-6yz"/>
                     <connections>
+                        <outlet property="tableview" destination="r8w-qx-Rym" id="10b-ka-43Q"/>
                         <segue destination="JlB-oM-PnS" kind="show" identifier="showformdetail" id="ZAo-WP-1Ij"/>
                     </connections>
                 </viewController>

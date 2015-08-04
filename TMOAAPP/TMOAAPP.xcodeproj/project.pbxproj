@@ -47,6 +47,8 @@
 		CEF5FF9F1B70B371008B2333 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5FF921B70B371008B2333 /* ASIHTTPRequest.m */; };
 		CEF5FFA01B70B371008B2333 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5FF961B70B371008B2333 /* ASIInputStream.m */; };
 		CEF5FFA11B70B371008B2333 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5FF981B70B371008B2333 /* ASINetworkQueue.m */; };
+		CEF5FFC51B70B6E1008B2333 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5FFC11B70B6E1008B2333 /* CurrentUser.m */; };
+		CEF5FFC61B70B6E1008B2333 /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5FFC41B70B6E1008B2333 /* KKUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,11 @@
 		CEF5FF971B70B371008B2333 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		CEF5FF981B70B371008B2333 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		CEF5FF991B70B371008B2333 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		CEF5FFC01B70B6E1008B2333 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		CEF5FFC11B70B6E1008B2333 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
+		CEF5FFC21B70B6E1008B2333 /* h5kkContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = h5kkContants.h; sourceTree = "<group>"; };
+		CEF5FFC31B70B6E1008B2333 /* KKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUtility.h; sourceTree = "<group>"; };
+		CEF5FFC41B70B6E1008B2333 /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +193,7 @@
 		CEF5FF041B7060C6008B2333 /* TMOAAPP */ = {
 			isa = PBXGroup;
 			children = (
+				CEF5FFBF1B70B6E1008B2333 /* Common */,
 				CEF5FF091B7060C6008B2333 /* AppDelegate.h */,
 				CEF5FF0A1B7060C6008B2333 /* AppDelegate.m */,
 				CEF5FF0C1B7060C6008B2333 /* FirstViewController.h */,
@@ -380,6 +388,18 @@
 			path = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
+		CEF5FFBF1B70B6E1008B2333 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEF5FFC01B70B6E1008B2333 /* CurrentUser.h */,
+				CEF5FFC11B70B6E1008B2333 /* CurrentUser.m */,
+				CEF5FFC21B70B6E1008B2333 /* h5kkContants.h */,
+				CEF5FFC31B70B6E1008B2333 /* KKUtility.h */,
+				CEF5FFC41B70B6E1008B2333 /* KKUtility.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -493,7 +513,9 @@
 				CEF5FF791B70B29E008B2333 /* SBJson4Parser.m in Sources */,
 				CEF5FF9E1B70B371008B2333 /* ASIFormDataRequest.m in Sources */,
 				CEF5FF111B7060C6008B2333 /* SecondViewController.m in Sources */,
+				CEF5FFC51B70B6E1008B2333 /* CurrentUser.m in Sources */,
 				CEF5FF7E1B70B29E008B2333 /* SBJson4StreamWriterState.m in Sources */,
+				CEF5FFC61B70B6E1008B2333 /* KKUtility.m in Sources */,
 				CEF5FF7F1B70B29E008B2333 /* SBJson4Writer.m in Sources */,
 				CEF5FF391B70A7E5008B2333 /* Title_cViewController.m in Sources */,
 				CEF5FF801B70B29E008B2333 /* SVIndefiniteAnimatedView.m in Sources */,

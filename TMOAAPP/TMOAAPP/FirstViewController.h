@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ASIFormDataRequest.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 
 @end
