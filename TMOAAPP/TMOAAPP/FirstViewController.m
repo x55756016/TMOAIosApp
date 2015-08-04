@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    remove(<#const char *#>);
+   
     // Do any additional setup after loading the view, typically from a nib.
 }
 
