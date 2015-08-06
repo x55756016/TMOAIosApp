@@ -12,7 +12,7 @@
 #import "AddressBook/ABAddressBook.h"
 #import "h5kkContants.h"
 
-UIKIT_EXTERN NSString *userFolderPath;
+ NSString *userFolderPath;
 
 @implementation KKUtility
 //获取本地文件存储的用户信息

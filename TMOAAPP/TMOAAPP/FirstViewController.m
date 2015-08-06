@@ -1,4 +1,4 @@
-//
+		//
 //  FirstViewController.m
 //  TMOAAPP
 //
@@ -9,21 +9,69 @@
 #import "FirstViewController.h"
 #import "h5kkContants.h"
 #import "KKUtility.h"
+#define KFirstSegmentedIndex 0
+#define KSecondSegmentedIndex 1
+
+
 
 @interface FirstViewController ()
 {
- ASIFormDataRequest *request;
-    NSArray *TaskArry;
+    ASIFormDataRequest *request;
+    NSArray *TaskArray;
+    NSMutableArray *taskRelust;
 }
 
 @end
 
 @implementation FirstViewController
+@synthesize TaskArray;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadAdData];
+    //[self loadAdData];
+    
+    TaskArray = [[NSArray alloc]initWithObjects:@"待处理1",@"待处理2",@"待处理3",@"已办1",@"已办2",nil];
+    taskRelust=[[NSMutableArray alloc] initWithArray:TaskArray];
     // Do any additional setup after loading the view, typically from a nib.
+}
+-(void)initSegmentControl
+{
+    //NSArray *TaskArray = [[NSArray alloc]initWithObjects:@"待处理",@"已处理",nil];
+}
+
+- (IBAction)SegmentPressed:(id)sender {
+    [taskRelust removeAllObjects];
+    
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+          //  [TaskArray removeFromSuperview];
+            for (NSString * theStr in TaskArray) {
+               
+                NSRange range = [theStr rangeOfString:@"待处理"];//判断字符串是否包含
+                if (range.length >0)//包含
+                {
+                    [taskRelust addObject:theStr];
+                }
+                
+            }
+            break;
+        case 1:
+            for (NSString * theStr in TaskArray) {
+                NSRange range = [theStr rangeOfString:@"已办"];//判断字符串是否包含
+                if (range.length >0)//包含
+                {
+                    [taskRelust addObject:theStr];
+                }
+            }
+            break;
+        default:
+            NSLog(@"segmentActionDefault");
+            break;
+    }
+    
+    //结束刷新状态
+    [self.tableview reloadData];
 }
 
 //网络请求广告
@@ -41,32 +89,32 @@
     [request startAsynchronous];
 }
 
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [taskRelust count];
     
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 10;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger section = [indexPath section];    //分组的tableView里才有用
-    NSInteger row = [indexPath row];
-    static NSString *SectionsTableIdentifier = @"SectionsTableIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SectionsTableIdentifier];
-    if (cell == nil)
-      {
-        cell = [[UITableViewCell alloc]
-                
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:SectionsTableIdentifier];
-        
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *SimpleTableIdentifier = @"SimlpeTableIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SimpleTableIdentifier];
     }
-    cell.textLabel.text = [[myDataSource objectAtIndex:sectionNumber] objectAtIndex:rowNumber];//设置当前单元格的显示内容
     
-    cell.textLabel.textColor = [UIColor greenColor];//设置当前单元格的显示字体的颜色
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = [taskRelust objectAtIndex:row];
     
     return cell;
 }
@@ -81,9 +129,9 @@
     
     if([[dic objectForKey:@"IsSuccess"] integerValue])
     {
-        TaskArry = [dic objectForKey:@"ObjData"];
+        TaskArray = [dic objectForKey:@"ObjData"];
         //    NSLog(@"加载playerArray[%lu][%@]", (unsigned long)playerArray.count, playerArray);
-        if([TaskArry count]<1)
+        if([TaskArray count]<1)
         {
             NSLog(@"获取到待办数据为0");
         }
@@ -91,6 +139,9 @@
         [self.tableview reloadData];
     }
 }
+
+
+
 
 - (void)loadAdDataFail:(ASIHTTPRequest *)req
 {
@@ -101,7 +152,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *TaskArryDict = TaskArry[indexPath.row];
+    NSDictionary *TaskArryDict = TaskArray[indexPath.row];
            //打开玩家界面
         NSDictionary *adDic=[NSDictionary dictionaryWithObject:TaskArryDict forKey:@"UserId"];
         [self performSegueWithIdentifier:@"showformdetail" sender:adDic];

@@ -12,6 +12,11 @@
 @interface FirstViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic) NSArray *TaskArray;
+
+
+- (IBAction)SegmentPressed:(id)sender;
+
 
 
 @end

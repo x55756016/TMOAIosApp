@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Title_bViewController : UIViewController
+@interface Title_bViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property(weak,nonatomic)IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *listData;
 
 @end
